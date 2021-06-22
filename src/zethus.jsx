@@ -12,10 +12,22 @@ import ErrorBoundary from './components/errorBoundary';
 class Zethus extends React.Component {
   constructor(props) {
     super(props);
+
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const urlParams = Object.fromEntries(urlSearchParams.entries());
+    const urlConfig = urlParams.config
+      ? JSON.parse(urlParams.config)
+      : undefined;
+    this.zethusId = urlParams.zethusId ? urlParams.zethusId : undefined;
+
     const providedConfig =
-      props.configuration || store.get('zethus_config') || {};
+      props.configuration || urlConfig || store.get('zethus_config') || {};
 
     // Empty object is required or the merge function mutates default config
+    window.document.addEventListener('SetConfig', e => {
+      this.updateConfiguration(e.config, e.replaceOnExisting || false);
+    });
+
     this.state = {
       configuration: _.merge({}, DEFAULT_CONFIG, providedConfig),
     };
@@ -42,6 +54,14 @@ class Zethus extends React.Component {
         ..._.merge(oldConfiguration, configuration),
       };
     }
+
+    if (window.parent && this.zethusId) {
+      const event = new CustomEvent(`ZethusUpdateConfig${this.zethusId}`, {
+        detail: { config: newConfiguration },
+      });
+      window.parent.document.dispatchEvent(event);
+    }
+
     this.setState({ configuration: newConfiguration });
   }
 
