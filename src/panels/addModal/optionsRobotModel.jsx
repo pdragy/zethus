@@ -42,6 +42,14 @@ class RobotModelOptions extends React.Component {
     });
   }
 
+  getURLEndpoint() {
+    const { search } = window.location;
+    const pattern = new RegExp(/&pkgs=(?<url>[^&]*)$/g);
+    const url = pattern.exec(search);
+    // console.debug("url", url);
+    return url[1] || `http://localhost:9090/ros/pkgs`;
+  }
+
   getPackages() {
     const {
       ros,
@@ -53,7 +61,7 @@ class RobotModelOptions extends React.Component {
         this.setState({
           packages: _.mapValues(
             _.keyBy(packages),
-            p => `/jupyterlab-ros/rospkgs/${p}`,
+            p => `${this.getURLEndpoint()}/${p}`,
           ),
           status: statuses.loaded,
         });
