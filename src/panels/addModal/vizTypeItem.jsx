@@ -26,6 +26,8 @@ const customStyles = {
 };
 
 class VizTypeItem extends React.PureComponent {
+  orderTopics() {}
+
   render() {
     const {
       rosParams,
@@ -45,6 +47,10 @@ class VizTypeItem extends React.PureComponent {
         _.get(selectedViz, 'vizType') === VIZ_TYPE_IMAGE_STREAM,
     };
     if (vizDetails.type === VIZ_TYPE_ROBOTMODEL) {
+      const params = rosParams.filter(param =>
+        param.includes('robot_description'),
+      );
+      params.sort((a, b) => a.length - b.length);
       return (
         <div>
           <TypeHeading>
@@ -64,7 +70,9 @@ class VizTypeItem extends React.PureComponent {
                   ? { label: topicName, value: topicName }
                   : ''
               }
-              options={_.map(rosParams, p => ({ label: p, value: p }))}
+              options={_.map(params, p => {
+                return { label: p, value: p };
+              })}
               onChange={({ value }) => {
                 selectViz(vizDetails.type, value, '');
               }}
