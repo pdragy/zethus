@@ -43,11 +43,9 @@ class RobotModelOptions extends React.Component {
   }
 
   getURLEndpoint() {
-    const { search } = window.location;
-    const pattern = new RegExp(/&pkgs=(?<url>[^&]*)$/g);
-    const url = pattern.exec(search);
-    // console.debug("url", url);
-    return url[1] || `http://localhost:9090/ros/pkgs`;
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const urlParams = Object.fromEntries(urlSearchParams.entries());
+    return urlParams.pkgs || `http://localhost:9090/ros/pkgs`;
   }
 
   getPackages() {

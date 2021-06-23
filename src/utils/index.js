@@ -32,24 +32,17 @@ export const downloadFile = (content, filename, options = {}) => {
 };
 
 const getURLEndpoint = type => {
-  const { search } = window.location;
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const urlParams = Object.fromEntries(urlSearchParams.entries());
 
   if (type === 'bridge') {
-    const pattern = new RegExp(/&bridge=(?<url>[^&]*)&/g);
-    const url = pattern.exec(search);
-    // console.debug("url", url);
-    return url[1];
+    urlParams.bridge;
   }
   if (type === 'pkgs') {
-    const pattern = new RegExp(/&pkgs=(?<url>[^&]*)$/g);
-    const url = pattern.exec(search);
-    // console.debug("url", url);
-    return url[1];
+    urlParams.pkgs;
   }
   return '';
 };
-
-getURLEndpoint('bridge');
 
 export const DEFAULT_CONFIG = {
   panels: {
