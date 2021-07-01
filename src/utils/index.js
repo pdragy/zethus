@@ -31,6 +31,19 @@ export const downloadFile = (content, filename, options = {}) => {
   document.body.removeChild(element);
 };
 
+const getURLEndpoint = type => {
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const urlParams = Object.fromEntries(urlSearchParams.entries());
+
+  if (type === 'bridge') {
+    urlParams.bridge;
+  }
+  if (type === 'pkgs') {
+    urlParams.pkgs;
+  }
+  return '';
+};
+
 export const DEFAULT_CONFIG = {
   panels: {
     sidebar: {
@@ -46,7 +59,10 @@ export const DEFAULT_CONFIG = {
     },
   },
   ros: {
-    endpoint: `ws://${window.location.host}/jupyterlab-ros/bridge`,
+    endpoint:
+      getURLEndpoint('bridge') || `ws://${window.location.host}/ros/bridge`,
+    pkgsEndpoint:
+      getURLEndpoint('pkgs') || `http://${window.location.host}/ros/pkgs`,
   },
   infoTabs: [],
   visualizations: [],

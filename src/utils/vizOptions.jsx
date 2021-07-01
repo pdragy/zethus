@@ -4,7 +4,7 @@ import { iconFillStyle, iconLineStyle } from './common';
 
 const {
   MESSAGE_TYPE_IMAGE,
-  VIZ_TYPE_WRENCH,
+  MESSAGE_TYPE_INTERACTIVEMARKER,
   MESSAGE_TYPE_INTERACTIVEMARKER_FEEDBACK,
   MESSAGE_TYPE_INTERACTIVEMARKER_UPDATE,
   MESSAGE_TYPE_LASERSCAN,
@@ -20,7 +20,7 @@ const {
   MESSAGE_TYPE_RANGE,
   MESSAGE_TYPE_ROBOT_MODEL,
   MESSAGE_TYPE_TF,
-  MESSAGE_TYPE_INTERACTIVEMARKER,
+  MESSAGE_TYPE_TF2,
   MESSAGE_TYPE_WRENCHSTAMPED,
   VIZ_TYPE_IMAGE,
   VIZ_TYPE_INTERACTIVEMARKER,
@@ -37,7 +37,7 @@ const {
   VIZ_TYPE_RANGE,
   VIZ_TYPE_ROBOTMODEL,
   VIZ_TYPE_TF,
-  MESSAGE_TYPE_TF2,
+  VIZ_TYPE_WRENCH,
 } = CONSTANTS;
 
 export const VIZ_TYPE_DEPTHCLOUD_STREAM = 'Depthcloud stream';
@@ -97,7 +97,7 @@ export const vizOptions = [
     ),
     messageTypes: [MESSAGE_TYPE_IMAGE],
     description: `Creates a container to visualize the image data represented by a sensor_msgs/Image topic.
-    ![](/jupyterlab-ros/zethus/image/viz/viz-image.png "")`,
+    ![](${window.location.protocol}//${window.location.host}/zethus/app/image/viz/viz-image.png "")`,
     docsLink: `${DOCS_ROOT_URL}Image`,
   },
   {
@@ -122,7 +122,7 @@ export const vizOptions = [
     messageTypes: [],
     description: `Creates a container to visualize the image data as a video stream coming via
     [web-video-server](http://wiki.ros.org/web_video_server).
-    ![](/jupyterlab-ros/zethus/image/viz/viz-image.png "")`,
+    ![](${window.location.protocol}//${window.location.host}/zethus/app/image/viz/viz-image.png "")`,
     docsLink: `${DOCS_ROOT_URL}ImageStream`,
   },
   {
@@ -154,7 +154,7 @@ export const vizOptions = [
     ),
     messageTypes: [MESSAGE_TYPE_LASERSCAN],
     description: `Adds a visualization represented by a sensor_msgs/LaserScan topic to the scene.
-    ![](/jupyterlab-ros/zethus/image/viz/viz-laserscan.png "")`,
+    ![](${window.location.protocol}//${window.location.host}/zethus/app/image/viz/viz-laserscan.png "")`,
     docsLink: `${DOCS_ROOT_URL}Laser-Scan`,
   },
   {
@@ -204,7 +204,7 @@ export const vizOptions = [
     ),
     messageTypes: [MESSAGE_TYPE_OCCUPANCYGRID],
     description: `Adds a visualization represented by a nav_msgs/OccupancyGrid topic to the scene.
-    ![](/jupyterlab-ros/zethus/image/viz/viz-map.png "")`,
+    ![](${window.location.protocol}//${window.location.host}/zethus/app/image/viz/viz-map.png "")`,
     docsLink: `${DOCS_ROOT_URL}Map`,
   },
   {
@@ -218,7 +218,7 @@ export const vizOptions = [
     ),
     messageTypes: [MESSAGE_TYPE_MARKER],
     description: `Adds a visualization represented by a visualization_msgs/Marker or visualization_msgs/MarkerArray topic to the scene.
-    ![](/jupyterlab-ros/zethus/image/viz/viz-marker.png "")`,
+    ![](${window.location.protocol}//${window.location.host}/zethus/app/image/viz/viz-marker.png "")`,
     docsLink: `${DOCS_ROOT_URL}Marker`,
   },
   {
@@ -226,7 +226,7 @@ export const vizOptions = [
     icon: markerArrayIcon,
     messageTypes: [MESSAGE_TYPE_MARKERARRAY],
     description: `Adds a visualization represented by a visualization_msgs/Marker or visualization_msgs/MarkerArray topic to the scene.
-    ![](/jupyterlab-ros/zethus/image/viz/viz-markerarray.png "")`,
+    ![](${window.location.protocol}//${window.location.host}/zethus/app/image/viz/viz-markerarray.png "")`,
     docsLink: `${DOCS_ROOT_URL}Marker-Array`,
   },
   {
@@ -238,7 +238,7 @@ export const vizOptions = [
       MESSAGE_TYPE_INTERACTIVEMARKER_FEEDBACK,
     ],
     description: `Adds an interactive visualization represented by a visualization_msgs/InteractiveMarker topic to the scene.
-    ![](/jupyterlab-ros/zethus/image/viz/viz-interactive-marker.png)`,
+    ![](${window.location.protocol}//${window.location.host}/zethus/app/image/viz/viz-interactive-marker.png)`,
     docsLink: `${DOCS_ROOT_URL}Interactive-Marker`,
   },
   {
@@ -284,7 +284,7 @@ export const vizOptions = [
     ),
     messageTypes: [MESSAGE_TYPE_ODOMETRY],
     description: `Adds a visualization represented by a nav_msgs/Odometry topic to the scene.
-    ![](/jupyterlab-ros/zethus/image/viz/viz-odometry.png "")`,
+    ![](${window.location.protocol}//${window.location.host}/zethus/app/image/viz/viz-odometry.png "")`,
     docsLink: `${DOCS_ROOT_URL}Odometry`,
     isDisplay: false,
   },
@@ -299,7 +299,7 @@ export const vizOptions = [
     ),
     messageTypes: [MESSAGE_TYPE_PATH],
     description: `Adds a visualization represented by a nav_msgs/Path topic to the scene.
-    ![](/jupyterlab-ros/zethus/image/viz/viz-path.png "")`,
+    ![](${window.location.protocol}//${window.location.host}/zethus/app/image/viz/viz-path.png "")`,
     docsLink: `${DOCS_ROOT_URL}Path`,
   },
   {
@@ -311,7 +311,7 @@ export const vizOptions = [
     ),
     messageTypes: [MESSAGE_TYPE_POINTSTAMPED],
     description: `Adds a visualization represented by a geometry_msgs/PointStamped topic to the scene.
-    ![](/jupyterlab-ros/zethus/image/viz/viz-point.png "")`,
+    ![](${window.location.protocol}//${window.location.host}/zethus/app/image/viz/viz-point.png "")`,
     docsLink: `${DOCS_ROOT_URL}Point`,
   },
   {
@@ -330,7 +330,7 @@ export const vizOptions = [
     ),
     messageTypes: [MESSAGE_TYPE_POINTCLOUD2],
     description: `Adds a visualization represented by a sensor_msgs/PointCloud2 topic to the scene.
-    ![](/jupyterlab-ros/zethus/image/viz/viz-pointcloud.png "")`,
+    ![](${window.location.protocol}//${window.location.host}/zethus/app/image/viz/viz-pointcloud.png "")`,
     docsLink: `${DOCS_ROOT_URL}Point-Cloud-2`,
   },
   {
@@ -359,7 +359,7 @@ export const vizOptions = [
     ),
     messageTypes: [MESSAGE_TYPE_POSESTAMPED],
     description: `Adds a visualization represented by a geometry_msgs/PoseStamped topic to the scene.
-    ![](/jupyterlab-ros/zethus/image/viz/viz-pose.png "")`,
+    ![](${window.location.protocol}//${window.location.host}/zethus/app/image/viz/viz-pose.png "")`,
     docsLink: `${DOCS_ROOT_URL}Pose`,
   },
   {
@@ -400,7 +400,7 @@ export const vizOptions = [
     ),
     messageTypes: [MESSAGE_TYPE_POSEARRAY],
     description: `Adds a visualization represented by a geometry_msgs/PoseArray topic to the scene. An array of pose is added to the scene based on the Shape type selected.
-    ![](/jupyterlab-ros/zethus/image/viz/viz-posearray.png "")`,
+    ![](${window.location.protocol}//${window.location.host}/zethus/app/image/viz/viz-posearray.png "")`,
     docsLink: `${DOCS_ROOT_URL}Pose-Array`,
   },
   {
@@ -415,7 +415,7 @@ export const vizOptions = [
     ),
     messageTypes: [MESSAGE_TYPE_RANGE],
     description: `Adds a visualization represented by a sensor_msgs/Range topic to the scene.
-    ![](/jupyterlab-ros/zethus/image/viz/viz-range.png "")`,
+    ![](${window.location.protocol}//${window.location.host}/zethus/app/image/viz/viz-range.png "")`,
     docsLink: `${DOCS_ROOT_URL}Range`,
   },
   {
@@ -484,7 +484,7 @@ export const vizOptions = [
     ),
     messageTypes: [MESSAGE_TYPE_ROBOT_MODEL],
     description: `Adds a robot model to the scene from a ros parameter.
-    ![](/jupyterlab-ros/zethus/image/viz/viz-robotmodel.png "")`,
+    ![](${window.location.protocol}//${window.location.host}/zethus/app/image/viz/viz-robotmodel.png "")`,
     docsLink: `${DOCS_ROOT_URL}Robot-Model`,
   },
   {
@@ -522,7 +522,7 @@ export const vizOptions = [
     ),
     messageTypes: TF_MESSAGE_TYPES,
     description: `Adds a visualization represented by a tf/tfMessage and tf2_msgs/TFMessage topic to the scene.
-    ![](/jupyterlab-ros/zethus/image/viz/viz-tf.png "")`,
+    ![](${window.location.protocol}//${window.location.host}/zethus/app/image/viz/viz-tf.png "")`,
     docsLink: `${DOCS_ROOT_URL}Tf`,
   },
   {
@@ -559,7 +559,7 @@ export const vizOptions = [
     ),
     messageTypes: [MESSAGE_TYPE_WRENCHSTAMPED],
     description: `Adds a visualization represented by a geometry_msgs/WrenchStamped topic to the scene.
-    ![](/jupyterlab-ros/zethus/image/viz/viz-wrench.png "")`,
+    ![](${window.location.protocol}//${window.location.host}/zethus/app/image/viz/viz-wrench.png "")`,
     docsLink: `${DOCS_ROOT_URL}Wrench`,
   },
 ];
