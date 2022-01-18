@@ -46,7 +46,7 @@
     "three": "^0.117.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --config webpack.app.dev.js --host 192.168.64.6",
+    "start": "webpack-dev-server --config webpack.app.dev.js --host 10.82.207.213",
     "build": "webpack --config webpack.app.prod.js",
     "build-lib": "webpack --config webpack.lib.prod.js",
     "lint": "eslint src/**/*.{js,jsx} --fix",

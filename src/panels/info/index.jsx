@@ -27,15 +27,22 @@ import AddInfoPanelModal from './addInfoPanelModal';
 const MESSAGE_BUFFER_MAX_LENGTH = 1000;
 const compressionTypes = new Set([
   'sensor_msgs/Image',
+  'sensor_msgs/msg/Image',
   'sensor_msgs/PointCloud2',
+  'sensor_msgs/msg/PointCloud2',
   'sensor_msgs/PointCloud',
   'sensor_msgs/LaserScan',
+  'sensor_msgs/msg/LaserScan',
   'nav_msgs/Path',
+  'nav_msgs/msg/Path',
   'nav_msgs/OccupancyGrid',
+  'nav_msgs/msg/OccupancyGrid',
   'visualization_msgs/MarkerArray',
+  'visualization_msgs/msg/MarkerArray',
   'geometry_msgs/Polygon',
   'geometry_msgs/PolygonStamped',
   'geometry_msgs/PoseArray',
+  'geometry_msgs/msg/PoseArray',
 ]);
 const getTopicOptions = messageType => {
   if (compressionTypes.has(messageType)) {

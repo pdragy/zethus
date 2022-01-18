@@ -4,14 +4,28 @@ const replacementMap = {
   'sensor_msgs/Image': {
     key: 'data',
   },
+  'sensor_msgs/msg/Image': {
+    key: 'data',
+  },
   'visualization_msgs/MarkerArray': {
+    key: 'markers',
+    validation: it => size(it) <= 1000,
+  },
+  'visualization_msgs/msg/MarkerArray': {
     key: 'markers',
     validation: it => size(it) <= 1000,
   },
   'nav_msgs/OccupancyGrid': {
     key: 'data',
   },
+  'nav_msgs/msg/OccupancyGrid': {
+    key: 'data',
+  },
   'nav_msgs/Path': {
+    key: 'poses',
+    validation: it => size(it) <= 1000,
+  },
+  'nav_msgs/msg/Path': {
     key: 'poses',
     validation: it => size(it) <= 1000,
   },
@@ -21,6 +35,9 @@ const replacementMap = {
   'sensor_msgs/PointCloud2': {
     key: 'data',
   },
+  'sensor_msgs/msg/PointCloud2': {
+    key: 'data',
+  },
   'geometry_msgs/Polygon': {
     key: 'points',
   },
@@ -28,6 +45,10 @@ const replacementMap = {
     key: 'polygon.points',
   },
   'geometry_msgs/PoseArray': {
+    key: 'poses',
+    validation: it => size(it) <= 1000,
+  },
+  'geometry_msgs/msg/PoseArray': {
     key: 'poses',
     validation: it => size(it) <= 1000,
   },

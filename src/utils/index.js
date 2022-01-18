@@ -1,6 +1,7 @@
 import { CONSTANTS } from 'amphion';
 import _ from 'lodash';
 import { TF_MESSAGE_TYPES } from './vizOptions';
+import { ROS2_TF_MESSAGE_TYPES } from './vizOptions';
 
 const { DEFAULT_OPTIONS_SCENE } = CONSTANTS;
 
@@ -13,6 +14,9 @@ export const ROS_SOCKET_STATUSES = {
 
 export const getTfTopics = rosTopics =>
   _.filter(rosTopics, t => _.includes(TF_MESSAGE_TYPES, t.messageType));
+
+export const getROS2TfTopics = rosTopics =>
+  _.filter(rosTopics, t => _.includes(ROS2_TF_MESSAGE_TYPES, t.messageType));
 
 export const stopPropagation = e => e.stopPropagation();
 

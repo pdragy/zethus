@@ -51,6 +51,7 @@ class TopicName extends React.Component {
               const vizOption = _.find(vizOptions, v =>
                 _.includes(v.messageTypes, messageType),
               );
+              console.log(vizOptions);
               return vizOption ? (
                 <TopicRow
                   type="button"
