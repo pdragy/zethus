@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import { vizOptions } from '../../utils/vizOptions';
+import { ros2vizOptions } from '../../utils/vizOptions';
 import { ButtonPrimary, FlexGrow } from '../../components/styled';
 import {
   AddVizForm,
@@ -41,14 +42,14 @@ class TopicName extends React.Component {
   }
 
   render() {
-    const { closeModal, rosTopics } = this.props;
+    const { closeModal, rosTopics, rosVersion } = this.props;
     const { selectedViz } = this.state;
     return (
       <AddVizForm onSubmit={this.onSubmit}>
         <TypeContainer>
           <TypeSelection>
             {_.map(_.sortBy(rosTopics, 'name'), ({ name, messageType }) => {
-              const vizOption = _.find(vizOptions, v =>
+              const vizOption = _.find(rosVersion === 1 ? vizOptions : ros2vizOptions, v =>
                 _.includes(v.messageTypes, messageType),
               );
               console.log(vizOptions);

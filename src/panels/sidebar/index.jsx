@@ -3,6 +3,7 @@ import _ from 'lodash';
 
 import { ROS_SOCKET_STATUSES } from '../../utils';
 import { vizOptions } from '../../utils/vizOptions';
+import { ros2vizOptions } from '../../utils/vizOptions';
 import GlobalOptions from './globalOptions';
 import {
   ButtonPrimary,
@@ -73,6 +74,7 @@ class Sidebar extends React.Component {
       rosInstance,
       rosStatus,
       rosTopics,
+      rosVersion,
       toggleAddModal,
       toggleConfigurationModal,
       toggleVisibility,
@@ -120,7 +122,7 @@ class Sidebar extends React.Component {
                 )}
                 {_.map(visualizations, vizItem => {
                   const vizObject = _.find(
-                    vizOptions,
+                    rosVersion === 1 ? vizOptions : ros2vizOptions,
                     v => v.type === vizItem.vizType,
                   );
                   if (!vizObject) {

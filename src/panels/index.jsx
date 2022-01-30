@@ -34,6 +34,7 @@ class Wrapper extends React.Component {
       configurationModalOpen: false,
       rosTopics: [],
       rosParams: [],
+      rosVersion: 0,
       framesList: [],
       activeTool: TOOL_TYPE_CONTROLS,
       graphModalOpen: false,
@@ -58,6 +59,7 @@ class Wrapper extends React.Component {
 
     this.vizInstances = new Set();
     this.ros = new ROSLIB.Ros();
+    this.ros_version_service = new ROSLIB.Service({ros: this.ros, name: "/rosapi/get_ros_version", serviceType: "/rosapi_msgs/GetROSVersion"})
     this.viewer = new Amphion.TfViewer(this.ros, {
       onFramesListUpdate: this.updateFramesList,
     });
@@ -221,6 +223,9 @@ class Wrapper extends React.Component {
     this.ros.getParams(rosParams => {
       this.setState({ rosParams: _.map(rosParams, p => _.trimStart(p, '/')) });
     });
+    this.ros_version_service.callService(ROSLIB.ServiceRequest(), result => {
+      this.setState({ rosVersion: result.version });
+    });
   }
 
   componentWillUnmount() {
@@ -319,6 +324,7 @@ class Wrapper extends React.Component {
       graphModalOpen,
       rosEndpoint,
       rosParams,
+      rosVersion,
       rosStatus,
       rosTopics,
     } = this.state;
@@ -360,6 +366,7 @@ class Wrapper extends React.Component {
               ros={this.ros}
               rosTopics={rosTopics}
               rosParams={rosParams}
+              rosVersion={rosVersion}
               closeModal={this.toggleAddModal}
               addVisualization={this.addVisualization}
             />
@@ -380,6 +387,7 @@ class Wrapper extends React.Component {
               rosInstance={this.ros}
               rosTopics={rosTopics}
               rosStatus={rosStatus}
+              rosVersion={rosVersion}
               vizInstances={this.vizInstances}
               visualizations={visualizations}
               viewer={this.viewer}
@@ -420,6 +428,7 @@ class Wrapper extends React.Component {
               key={vizItem.key}
               viewer={this.viewer}
               rosTopics={rosTopics}
+              rosVersion={rosVersion}
               rosInstance={this.ros}
             />
           ))}

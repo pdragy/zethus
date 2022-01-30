@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import { vizOptions } from '../../utils/vizOptions';
+import { ros2vizOptions } from '../../utils/vizOptions';
 import VizTypeItem from './vizTypeItem';
 import VizTypeDetails from './vizTypeDetails';
 import { ButtonPrimary, FlexGrow } from '../../components/styled';
@@ -43,12 +44,12 @@ class VizType extends React.PureComponent {
 
   render() {
     const { selectedViz } = this.state;
-    const { closeModal, rosParams, rosTopics } = this.props;
+    const { closeModal, rosParams, rosTopics, rosVersion } = this.props;
     return (
       <AddVizForm onSubmit={this.onSubmit}>
         <TypeContainer>
           <TypeSelection>
-            {_.map(vizOptions, op => {
+            {_.map(rosVersion === 1 ? vizOptions : ros2vizOptions, op => {
               return (
                 <VizTypeItem
                   selectViz={this.selectViz}

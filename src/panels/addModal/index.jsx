@@ -54,6 +54,7 @@ class AddModal extends React.Component {
       ros,
       rosParams,
       rosTopics,
+      rosVersion,
     } = this.props;
     const { selectedViz, tabType } = this.state;
     return (
@@ -87,12 +88,14 @@ class AddModal extends React.Component {
                   rosTopics={rosTopics}
                   rosParams={rosParams}
                   closeModal={closeModal}
+                  rosVersion={rosVersion}
                 />
               ) : (
                 <TabTopicName
                   selectViz={this.selectViz}
                   rosTopics={rosTopics}
                   closeModal={closeModal}
+                  rosVersion={rosVersion}
                 />
               )}
             </>
