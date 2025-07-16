@@ -49,6 +49,12 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: 'javascript/auto',
+      },
+
+      {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },

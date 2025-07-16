@@ -21,7 +21,7 @@
     "url": "https://github.com/robostack/zethus/issues"
   },
   "dependencies": {
-    "amphion": "npm:@robostack/amphion@^0.1.24",
+    "amphion": "npm:@robostack/amphion@^0.1.25",
     "brace": "^0.11.1",
     "classnames": "^2.2.6",
     "d3": "^5.16.0",
@@ -46,7 +46,7 @@
     "three": "^0.117.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --config webpack.app.dev.js --host 10.82.207.213",
+    "start": "webpack-dev-server --config webpack.app.dev.js --host 127.0.0.1",
     "build": "webpack --config webpack.app.prod.js",
     "build-lib": "webpack --config webpack.lib.prod.js",
     "lint": "eslint src/**/*.{js,jsx} --fix",

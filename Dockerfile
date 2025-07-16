@@ -1,11 +1,7 @@
-FROM exiasr/alpine-yarn-nginx
-RUN apk update
-COPY . /usr/src/app/
-RUN (cd  /usr/src/app && npm ci && npm run build)
-WORKDIR /usr/src/app
-RUN mkdir -p /usr/share/nginx/html/ && \
-  cp -R build/* /usr/share/nginx/html/ && \
-  cp /usr/src/app/nginx.conf /etc/nginx/conf.d/default.conf && \
-  rm -rf /usr/src/app
+FROM node:8 AS build
+WORKDIR /src
+COPY . ./
+RUN npm ci && npm run build
 
-CMD ["nginx", "-g", "daemon off;"]
+FROM nginx
+COPY --from=build /src/build /usr/share/nginx/html
