@@ -21,7 +21,7 @@
     "url": "https://github.com/robostack/zethus/issues"
   },
   "dependencies": {
-    "amphion": "npm:@robostack/amphion@^0.1.25",
+    "amphion": "git+https://github.com/RoboStack/amphion.git",
     "brace": "^0.11.1",
     "classnames": "^2.2.6",
     "d3": "^5.16.0",
@@ -52,6 +52,7 @@
     "lint": "eslint src/**/*.{js,jsx} --fix",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "prebuild": "cd node_modules/amphion && npm install && npm run build",
     "prettier": "prettier src/**/* --write"
   },
   "browserslist": [
