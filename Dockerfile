@@ -1,4 +1,4 @@
-FROM node:8 AS build
+FROM node:12 AS build
 WORKDIR /src
 COPY . ./
 RUN npm ci && npm run build
