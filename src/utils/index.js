@@ -1,7 +1,6 @@
 import { CONSTANTS } from 'amphion';
 import _ from 'lodash';
-import { TF_MESSAGE_TYPES } from './vizOptions';
-import { ROS2_TF_MESSAGE_TYPES } from './vizOptions';
+import { TF_MESSAGE_TYPES, ROS2_TF_MESSAGE_TYPES } from './vizOptions';
 
 const { DEFAULT_OPTIONS_SCENE } = CONSTANTS;
 
@@ -63,10 +62,8 @@ export const DEFAULT_CONFIG = {
     },
   },
   ros: {
-    endpoint:
-      getURLEndpoint('bridge') || `ws://${window.location.host}/ros/bridge`,
-    pkgsEndpoint:
-      getURLEndpoint('pkgs') || `http://${window.location.host}/ros/pkgs`,
+    endpoint: getURLEndpoint('bridge') || `ws://localhost:9090`,
+    pkgsEndpoint: getURLEndpoint('pkgs') || `http://localhost:8000`,
   },
   infoTabs: [],
   visualizations: [],
